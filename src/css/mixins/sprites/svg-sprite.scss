@@ -1,0 +1,82 @@
+$sprite: map-get($svgSprite, sprite) !default;
+
+@function pxToEm($px, $base-font-size: 14px) {
+  @return $px;
+  @if unitless($px) {
+    @warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels.";
+    @return pxToEm($px + 0px);
+  } @else if unit($px) == em {
+    @return $px;
+  }
+  @return ($px / $base-font-size) * 1em;
+}
+
+@function svgSpriteAttribute($icon, $attr) {
+  $newIcon: map-get($svgSprite, $icon);
+  @if $newIcon == null {
+    @warn "Can't find an icon with the name #{$icon}";
+  }
+  @return map-get($newIcon, $attr);
+}
+
+@function iconAttribute($icon) {
+  $attr: (
+          width: svgSpriteAttribute($icon, width),
+          height: svgSpriteAttribute($icon, height),
+          x: svgSpriteAttribute($icon, backgroundX),
+          y: svgSpriteAttribute($icon, backgroundY)
+  );
+
+  @return $attr;
+}
+
+@function iconWidth($icon) {
+  @return svgSpriteAttribute($icon, width);
+}
+
+@function iconHeight($icon) {
+  @return svgSpriteAttribute($icon, height);
+}
+
+@mixin svgSprite($icon, $width: auto, $height: auto, $display: block, $type: all) {
+  @if $type == all {
+
+    display: $display;
+    background-color: transparent;
+    background-image: url(map-get($sprite, svgPath));
+    background-size: pxToEm(map-get($sprite, width)) pxToEm(map-get($sprite, height));
+  }
+
+  $iconMap: iconAttribute($icon);
+
+  @if $type == all or $type == size {
+    @if ($width == auto) {
+      width: pxToEm(map-get($iconMap, width));
+    } @else {
+      width: $width;
+    }
+    @if ($height == auto) {
+      height: pxToEm(map-get($iconMap, height));
+    } @else {
+      height: $height;
+    }
+  }
+
+  @if $type == all or $type == bg {
+    background-position: pxToEm(map-get($iconMap, x)) pxToEm(map-get($iconMap, y));
+  }
+}
+
+@mixin svgSpriteHover($icon, $icon_hover) {
+  @include svgSprite($icon);
+  &:hover {
+    @include svgSprite($icon_hover);
+  }
+}
+
+@mixin svgSpriteHoverOpacity($icon, $percent) {
+  @include svgSprite($icon);
+  &:hover {
+    opacity: $percent / 100;
+  }
+}

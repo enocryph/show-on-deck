@@ -1,0 +1,23 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+
+  background: linear-gradient(-45deg, #ee7752bf, #d96e97bf, #23a6d5bf, #23d5abbf);
+  background-size: 400% 400%;
+  animation: gradient 10s ease-in infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}

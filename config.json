@@ -1,0 +1,15 @@
+{
+  "src": "./src",
+  "dest": "./dest",
+  "tmp": "./.tmp",
+  "browserSync" : {
+    "server": {
+      "baseDir": "./.tmp",
+      "directory": true
+    },
+    "notify": false,
+    "open": true,
+    "logPrefix": "Orchid"
+  },
+  "scriptsSourceMaps": true
+}

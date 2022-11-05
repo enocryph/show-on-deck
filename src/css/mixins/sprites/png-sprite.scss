@@ -1,0 +1,25 @@
+@mixin pngSpriteWidth($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin pngSpriteHeight($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin pngSpritePosition($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x $sprite-offset-y;
+}
+
+@mixin pngSpriteImage($sprite) {
+  $pngSpriteImage: nth($sprite, 9);
+  background-image: url('/assets/sprite/' + $pngSpriteImage);
+}
+
+@mixin pngSprite($name) {
+  @include pngSpriteImage(map-get($pngSprite, $name));
+  @include pngSpritePosition(map-get($pngSprite, $name));
+  @include pngSpriteWidth(map-get($pngSprite, $name));
+  @include pngSpriteHeight(map-get($pngSprite, $name));
+}

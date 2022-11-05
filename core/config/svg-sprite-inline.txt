@@ -1,0 +1,13 @@
+.svg-inline {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+{{#shapes}}
+.svg-inline--{{base}} {
+  width: {{width.inner}}px;
+  height: {{height.inner}}px;
+}
+{{/shapes}}

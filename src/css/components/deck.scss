@@ -1,0 +1,19 @@
+.deck {
+
+}
+
+.deck__picture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.deck__youtube {
+  position: absolute;
+  width: 50%;
+  height: 75%;
+  margin-top: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}

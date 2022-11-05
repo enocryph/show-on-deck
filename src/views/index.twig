@@ -1,0 +1,40 @@
+{% extends 'layout/base.twig' %}
+
+{% block body %}
+    <main class="main">
+        <header class="header">
+            header
+        </header>
+{#        <div class="deck">#}
+{#            <div class="display">#}
+{#                width:#}
+{#                <input type="number" data-control-width>#}
+{#                height:#}
+{#                <input type="number" data-control-height>#}
+{#                diagonal#}
+{#                <input type="number" data-control-diagonal>#}
+{#            </div>#}
+{#            <div class="deck__picture">#}
+{#                <img class="deck__image" src="{{ asset('assets/steam-deck-white.png') }}" alt="Steam Deck Blueprint"#}
+{#                     data-control-deck>#}
+
+{#                <div class="deck__youtube">#}
+{#                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/AlWgZhMtlWo"#}
+{#                            title="YouTube video player" frameborder="0"#}
+{#                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"#}
+{#                            allowfullscreen></iframe>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+
+        <div class="resolution">
+            Your resolution is
+                <input class="inline-input" contenteditable="true" >
+                    x
+                <span class="inline-input" contenteditable="true">1440</span>
+        </div>
+        <footer class="footer">
+            footer
+        </footer>
+    </main>
+{% endblock %}
